@@ -1,0 +1,20 @@
+<!-- 重點:[formGroup]="contactForm"先把formGroup跟自己取的名字綁定  -->
+<!-- 再把input框指定formControlName -->
+<form [formGroup]="myform" (ngSubmit)="onSubmit($event)" class="example-form">
+    <mat-form-field class="example-full-width">
+    <div class="form-group">
+        <label for="email">信箱 :</label>
+        <input matInput type="text" id="email" formControlName="email">
+        <div *ngIf="myform.get('email')!.hasError('email')">請輸入有效的email</div>
+    </div>
+</mat-form-field>
+    <mat-form-field class="example-full-width">
+    <div class="form-group">
+        <label for="pwd">密碼:</label>
+        <input matInput type="text" id="pwd" formControlName="pwd">
+        <div *ngIf="myform.get('pwd')!.hasError('required')">請輸入密碼</div>
+    </div>
+</mat-form-field>
+    <button mat-raised-button color="warn" type="submit" >登入</button>
+    <button mat-raised-button color="warn" type="button" routerLink="/login/forms" style="margin: 15px;">註冊</button>
+</form>
